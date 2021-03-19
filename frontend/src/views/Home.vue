@@ -1,22 +1,51 @@
 <template>
-  <h1>digitalTwin</h1>
-  <img height="200" src="@/assets/threefold_registered.png" alt="">
-  <br>
-  <span>Start your digitalTwin journey</span> <br> <br>
-  <button class="fancyButton" @click="spawn">GO!</button>
+  <div>
+    <h1>digitalTwin</h1>
+    <img height="200" src="@/assets/threefold_registered.png" alt="" />
+    <br />
+    <span>Start your digitalTwin journey</span> <br />
+    <br />
+    <div>
+      <div for="">
+        Please enter your <strong>ThreeFold Connect</strong> name (without
+        .3bot)
+      </div>
+      <input
+        v-model="name"
+        style="margin-top: 5px;"
+        type="text"
+        name=""
+        id=""
+      />
+    </div>
+    <button
+      class="fancyButton"
+      style="margin-top: 20px;"
+      @click="loginAndSpawn"
+    >
+      GO!
+    </button>
+  </div>
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue";
+import { defineComponent, ref } from "vue";
 
-import {spawn} from "@/service/spawnService";
+import { spawn } from "@/service/spawnService";
 
 export default defineComponent({
   setup() {
-    return {
-      spawn
+    const name = ref("");
+
+    const loginAndSpawn = () => {
+      console.log("Going to login with username: ", name.value);
+      spawn(name.value);
     };
-  }
+    return {
+      name,
+      loginAndSpawn,
+    };
+  },
 });
 </script>
 

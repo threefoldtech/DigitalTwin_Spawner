@@ -11,7 +11,7 @@ services:
       - chatnet
 
   digitaltwin-proxy:
-    image: nginx
+    image: nginx:latest
     container_name: digitaltwin-proxy
     restart: always
     volumes:
