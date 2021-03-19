@@ -20,6 +20,15 @@ export const initDocker = async () => {
   }
 };
 
+const getImage = () => {
+  try {
+    const image = fs.readFileSync("/config/version.txt").toString();
+    return image.trim();
+  } catch (err) {
+    return "jimbersoftware/chat:0.6";
+  }
+};
+
 export const spawnDocker = async (userId: string) => {
   const volumeName = `chat_storage_${userId}`;
   const containerName = `${userId}-chat`;
