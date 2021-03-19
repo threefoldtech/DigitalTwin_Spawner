@@ -4,15 +4,6 @@ import * as fs from "fs";
 
 const docker = new Dockerode({ socketPath: "/var/run/docker.sock" });
 
-const getImage = () => {
-  try {
-    const image = fs.readFileSync("/config/version.txt").toString();
-    return image.trim();
-  } catch (err) {
-    return "jimbersoftware/chat:0.6";
-  }
-};
-
 export const initDocker = async () => {
   const networks = await docker.listNetworks();
   if (!networks.find((n) => n.Name === "chatnet")) {
