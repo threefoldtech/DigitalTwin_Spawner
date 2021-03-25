@@ -37,14 +37,18 @@ jobs:
       name: digitaltwin.staging
       url: https://digitaltwin-test.jimbertesting.be/
     steps:
-      - name: Deploy to Docker Host
-        uses: wshihadeh/docker-deployment-action@v1
+      - name: deploy on ssh
+        uses: appleboy/ssh-action@master
         with:
-          remote_docker_host: root@${{ secrets.SSH_HOST }}
-          ssh_private_key: ${{ secrets.SSH_KEY }}
-          ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
-          deployment_mode: docker-compose
-          stack_file_name: docker-compose.yml
-          args: up -d
-          pre_deployment_command_args: "bundle exec rake db:migrate"
-          pull_images_first: "true"
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            cd digitaltwin_spawner/
+            git checkout development
+            git pull
+            docker pull threefoldjimber/digitaltwin-spawner:${{ github.sha }}
+            docker pull threefoldjimber/digitaltwin-frontend:${{ github.sha }}
+            docker pull threefoldjimber/digitaltwin-proxy:${{ github.sha }}
+            docker-compose up -d
