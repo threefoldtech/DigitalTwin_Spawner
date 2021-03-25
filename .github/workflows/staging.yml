@@ -39,6 +39,10 @@ jobs:
     steps:
       - name: deploy on ssh
         uses: appleboy/ssh-action@master
+        env:
+          digitaltwin_spawner_tag: ${{ github.sha }}
+          digitaltwin_frontend_tag: ${{ github.sha }}
+          digitaltwin_proxy_tag: ${{ github.sha }}
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
