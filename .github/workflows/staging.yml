@@ -51,6 +51,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
+            echo "Deploying to production server on branch $GITHUB_REF"
+            echo "Deploying to production server on branch $(echo $GITHUB_REF | cut -d / -f 3)"
             cd digitaltwin_spawner/
             git pull
             git checkout $(echo $GITHUB_REF | cut -d / -f 3)
