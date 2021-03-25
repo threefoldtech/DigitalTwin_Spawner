@@ -56,3 +56,4 @@ jobs:
             docker pull threefoldjimber/digitaltwin-frontend:${{ github.sha }}
             docker pull threefoldjimber/digitaltwin-proxy:${{ github.sha }}
             docker-compose up -d
+            echo Completed.
