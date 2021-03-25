@@ -40,8 +40,6 @@ jobs:
       url: https://digitaltwin-test.jimbertesting.be/
     steps:
       - uses: actions/checkout@v2
-      - uses: olegtarasov/get-tag@v2.1
-        id: tagName
       - name: deploy on ssh
         run: |
           docker pull threefoldjimber/digitaltwin-spawner:${{ github.sha }}
@@ -49,3 +47,7 @@ jobs:
           docker pull threefoldjimber/digitaltwin-proxy:${{ github.sha }}
           docker-compose up -d
           echo Completed.
+        env:
+          digitaltwin_spawner_tag: ${{ github.sha }}
+          digitaltwin_frontend_tag: ${{ github.sha }}
+          digitaltwin_proxy_tag: ${{ github.sha }}
