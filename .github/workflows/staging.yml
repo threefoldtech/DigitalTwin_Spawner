@@ -39,7 +39,8 @@ jobs:
       name: digitaltwin.staging
       url: https://digitaltwin-test.jimbertesting.be/
     steps:
-      - uses: actions/checkout@v2
+      - uses: olegtarasov/get-tag@v2.1
+        id: tagName
       - name: deploy on ssh
         uses: appleboy/ssh-action@master
         env:
@@ -52,11 +53,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            echo "Deploying to production server on branch $GITHUB_REF"
-            echo "Deploying to production server on branch $(echo $GITHUB_REF | cut -d / -f 3)"
+            echo "Deploying to production server on branch $GIT_TAG_NAME"
             cd digitaltwin_spawner/
             git pull
-            git checkout $(echo $GITHUB_REF | cut -d / -f 3)
+            git checkout $GIT_TAG_NAME
             docker pull threefoldjimber/digitaltwin-spawner:${{ github.sha }}
             docker pull threefoldjimber/digitaltwin-frontend:${{ github.sha }}
             docker pull threefoldjimber/digitaltwin-proxy:${{ github.sha }}
