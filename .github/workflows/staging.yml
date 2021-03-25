@@ -2,7 +2,9 @@ name: staging-spawner
 
 on:
   push:
-    branches: [development]
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+-rc[0-9]+"
 
 jobs:
   build_staging:
@@ -50,7 +52,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd digitaltwin_spawner/
-            git checkout development
+            git checkout $(echo $GITHUB_REF | cut -d / -f 3)
             git pull
             docker pull threefoldjimber/digitaltwin-spawner:${{ github.sha }}
             docker pull threefoldjimber/digitaltwin-frontend:${{ github.sha }}
