@@ -34,31 +34,18 @@ jobs:
           docker push threefoldjimber/digitaltwin-proxy:${{ github.sha }}
   deploy_staging:
     needs: [build_staging]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment:
       name: digitaltwin.staging
       url: https://digitaltwin-test.jimbertesting.be/
     steps:
+      - uses: actions/checkout@v2
       - uses: olegtarasov/get-tag@v2.1
         id: tagName
       - name: deploy on ssh
-        uses: appleboy/ssh-action@master
-        env:
-          digitaltwin_spawner_tag: ${{ github.sha }}
-          digitaltwin_frontend_tag: ${{ github.sha }}
-          digitaltwin_proxy_tag: ${{ github.sha }}
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT }}
-          script: |
-            echo "Deploying to production server on branch $GIT_TAG_NAME"
-            cd digitaltwin_spawner/
-            git pull
-            git checkout $GIT_TAG_NAME
-            docker pull threefoldjimber/digitaltwin-spawner:${{ github.sha }}
-            docker pull threefoldjimber/digitaltwin-frontend:${{ github.sha }}
-            docker pull threefoldjimber/digitaltwin-proxy:${{ github.sha }}
-            docker-compose up -d
-            echo Completed.
+        run: |
+          docker pull threefoldjimber/digitaltwin-spawner:${{ github.sha }}
+          docker pull threefoldjimber/digitaltwin-frontend:${{ github.sha }}
+          docker pull threefoldjimber/digitaltwin-proxy:${{ github.sha }}
+          docker-compose up -d
+          echo Completed.
