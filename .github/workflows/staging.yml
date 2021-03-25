@@ -52,8 +52,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             cd digitaltwin_spawner/
-            git checkout $(echo $GITHUB_REF | cut -d / -f 3)
             git pull
+            git checkout $(echo $GITHUB_REF | cut -d / -f 3)
             docker pull threefoldjimber/digitaltwin-spawner:${{ github.sha }}
             docker pull threefoldjimber/digitaltwin-frontend:${{ github.sha }}
             docker pull threefoldjimber/digitaltwin-proxy:${{ github.sha }}
