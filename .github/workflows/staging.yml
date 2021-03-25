@@ -7,15 +7,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    environment:
-      digitaltwin_spawner_tag: ${{ github.sha }}
-      digitaltwin_frontend_tag: ${{ github.sha }}
     steps:
       - uses: actions/checkout@v2
       - uses: satackey/action-docker-layer-caching@v0.0.11
         continue-on-error: true
       - name: Build the Docker image
         run: docker-compose build
+        env:
+          digitaltwin_spawner_tag: ${{ github.sha }}
+          digitaltwin_frontend_tag: ${{ github.sha }}
       - name: Log into GitHub Container Registry
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: Push spawner to dockerhub
