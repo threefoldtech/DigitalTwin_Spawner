@@ -39,6 +39,7 @@ jobs:
       name: digitaltwin.staging
       url: https://digitaltwin-test.jimbertesting.be/
     steps:
+      - uses: actions/checkout@v2
       - name: deploy on ssh
         uses: appleboy/ssh-action@master
         env:
