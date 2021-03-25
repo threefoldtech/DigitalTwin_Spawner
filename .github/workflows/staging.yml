@@ -19,13 +19,7 @@ jobs:
           digitaltwin_proxy_tag: ${{ github.sha }}
       - name: Log into GitHub Container Registry
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-      - name: Push spawner to dockerhub
-        run: docker push threefoldjimber/digitaltwin-spawner:${{ github.sha }}
-      - name: Push frontend to dockerhub
-        run: docker push threefoldjimber/digitaltwin-frontend:${{ github.sha }}
-      - name: Push proxy to dockerhub
-        run: docker push threefoldjimber/digitaltwin-proxy:${{ github.sha }}
-      - name: Push latest to dockerhub
+      - name: Push all to dockerhub
         run: |
           docker tag threefoldjimber/digitaltwin-spawner:${{ github.sha }} threefoldjimber/digitaltwin-spawner:latest
           docker tag threefoldjimber/digitaltwin-frontend:${{ github.sha }} threefoldjimber/digitaltwin-frontend:latest
