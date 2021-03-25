@@ -5,7 +5,7 @@ on:
     branches: [development]
 
 jobs:
-  build:
+  build_staging:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -36,7 +36,7 @@ jobs:
           docker push threefoldjimber/digitaltwin-frontend:${{ github.sha }}
           docker push threefoldjimber/digitaltwin-proxy:${{ github.sha }}
   deploy_staging:
-    needs: [build]
+    needs: [build_staging]
     runs-on: ubuntu-latest
     environment:
       name: digitaltwin.staging
