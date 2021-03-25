@@ -7,7 +7,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    envs:
+    environment:
       digitaltwin_spawner_tag: ${{ github.sha }}
       digitaltwin_frontend_tag: ${{ github.sha }}
     steps:
