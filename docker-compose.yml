@@ -11,6 +11,8 @@ services:
       - /etc/digitaltwin:/config
     networks:
       - chatnet
+    environment:
+      - DIGITALTWIN_APPID=${DIGITALTWIN_APPID}
 
   digitaltwin-proxy:
     image: threefoldjimber/digitaltwin-proxy:${digitaltwin_proxy_tag}

@@ -72,7 +72,10 @@ export const spawnDocker = async (userId: string) => {
       ],
       Binds: [`${volumeName}:/appdata`],
     },
-    Env: [`USER_ID=${userId}`],
+    Env: [
+      `USER_ID=${userId}`,
+      `DIGITALTWIN_APPID=${process.env.DIGITALTWIN_APPID}`,
+    ],
   };
 
   try {
