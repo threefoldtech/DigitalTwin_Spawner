@@ -12,7 +12,7 @@ router.post("/spawn", async (req: Request, res: Response) => {
 
     res.json({
       success: true,
-      redirectUrl: `https://${name}.digitaltwin.jimbertesting.be`,
+      redirectUrl: `https://${name}.${process.env.DIGITALTWIN_APPID}`,
     });
   }
 });
