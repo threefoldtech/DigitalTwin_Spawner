@@ -40,7 +40,7 @@ jobs:
       url: https://digitaltwin-test.jimbertesting.be/
     steps:
       - uses: actions/checkout@v2
-      - name: deploy on ssh
+      - name: Deploying on staging server
         run: |
           docker pull threefoldjimber/digitaltwin-spawner:${{ github.sha }}
           docker pull threefoldjimber/digitaltwin-frontend:${{ github.sha }}
