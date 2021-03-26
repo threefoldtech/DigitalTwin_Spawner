@@ -1,9 +1,9 @@
-name: staging-spawner
+name: production-spawner
 
 on:
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+-rc[0-9]+"
+      - "v[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
   build:
@@ -33,13 +33,13 @@ jobs:
           docker push threefoldjimber/digitaltwin-proxy:${{ github.sha }}
   deploy:
     needs: [build]
-    runs-on: staging
+    runs-on: production
     environment:
-      name: digitaltwin.staging
-      url: https://digitaltwin-test.jimbertesting.be/
+      name: digitaltwin.production
+      url: https://digitaltwin.jimbertesting.be/
     steps:
       - uses: actions/checkout@v2
-      - name: Deploying on staging server
+      - name: Deploying on production server
         run: |
           docker pull threefoldjimber/digitaltwin-spawner:${{ github.sha }}
           docker pull threefoldjimber/digitaltwin-frontend:${{ github.sha }}
@@ -50,4 +50,4 @@ jobs:
           digitaltwin_spawner_tag: ${{ github.sha }}
           digitaltwin_frontend_tag: ${{ github.sha }}
           digitaltwin_proxy_tag: ${{ github.sha }}
-          DIGITALTWIN_APPID: "digitaltwin-test.jimbertesting.be"
+          DIGITALTWIN_APPID: "digitaltwin.jimbertesting.be"
