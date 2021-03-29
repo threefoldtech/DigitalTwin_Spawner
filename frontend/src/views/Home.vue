@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h1>digitalTwin</h1>
+    <h1>Digital Twin</h1>
     <img height="200" src="@/assets/threefold_registered.png" alt="" />
     <br />
-    <span>Start your digitalTwin journey</span> <br />
+    <span>Start your Digital Twin journey</span> <br />
     <br />
     <div>
       <div for="">
