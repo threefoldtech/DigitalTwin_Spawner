@@ -18,6 +18,8 @@ jobs:
           digitaltwin_spawner_tag: ${{ github.sha }}
           digitaltwin_frontend_tag: ${{ github.sha }}
           digitaltwin_proxy_tag: ${{ github.sha }}
+          DIGITALTWIN_APPID: "digitaltwin-test.jimbertesting.be"
+          ENVIRONMENT: "staging"
       - name: Log into GitHub Container Registry
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: Push all to dockerhub
