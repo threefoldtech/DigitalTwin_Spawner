@@ -38,6 +38,7 @@ export default defineComponent({
       console.log("Going to login with username: ", name.value);
       spawn(name.value);
     };
+
     return {
       name,
       loginAndSpawn,

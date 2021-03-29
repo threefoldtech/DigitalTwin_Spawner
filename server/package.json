@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "yarn run clean tsc && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
+    "serve": "yarn run clean tsc && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
     "build": "tsc",
     "clean": "rm -rf dist",
     "prod": "node dist/server.js"

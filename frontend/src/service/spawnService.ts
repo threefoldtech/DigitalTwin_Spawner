@@ -1,17 +1,42 @@
-import { login } from "@/service/authService";
 import axios from "axios";
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const spawn = async (name: string) => {
-  // Login is no longer needed in this step, this does cause infinite container spawning and creating containers in the name of other users.
-  // await login(name);
-
-  // Dirty workaround to fix logging in in 1 go. This causes the issue that u can create any container with any name without verification.
-
   console.log("Posting to /api/v1/spawn with name:", name);
-  const response = await axios.post("/api/v1/spawn", {
+
+  let endpoint = "/api/v1/spawn";
+
+  if (process.env.VUE_APP_ENVIRONMENT === "development") {
+    console.log("Running in development");
+    endpoint = process.env.VUE_APP_ENDPOINT + "/api/v1/spawn";
+  }
+
+  console.log("Endpoint: ", endpoint);
+  const response = await axios.post(endpoint, {
     name,
   });
-  console.log(response);
 
-  window.location.href = response.data?.redirectUrl;
+  if (response.status === 200) {
+    if (!response.data?.success) {
+      console.log(
+        "Spawn went wrong, redirecting the use anyways, since the container most-likely already exists."
+      );
+    }
+
+    window.location.href = response.data?.redirectUrl;
+  }
+
+  // console.log("Endpoint: ", endpoint);
+  // try {
+  //   const response = await axios.post(endpoint, {
+  //     name,
+  //   });
+
+  //   console.log("response: ", response);
+
+  //   window.location.href = response.data?.redirectUrl;
+  // } catch (err) {
+  //   console.log("Container might already exist, forwarding anyways.");
+  //   window.location.href = response.data?.redirectUrl;
+  // }
 };
