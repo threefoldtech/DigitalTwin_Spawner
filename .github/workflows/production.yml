@@ -51,3 +51,4 @@ jobs:
           digitaltwin_frontend_tag: ${{ github.sha }}
           digitaltwin_proxy_tag: ${{ github.sha }}
           DIGITALTWIN_APPID: "digitaltwin.jimbertesting.be"
+          ENVIRONMENT: "production"

@@ -13,6 +13,7 @@ services:
       - chatnet
     environment:
       - DIGITALTWIN_APPID=${DIGITALTWIN_APPID}
+      - ENVIRONMENT=${ENVIRONMENT}
 
   digitaltwin-proxy:
     image: threefoldjimber/digitaltwin-proxy:${digitaltwin_proxy_tag}
