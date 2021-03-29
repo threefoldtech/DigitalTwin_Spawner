@@ -12,17 +12,14 @@
       </div>
       <input
         v-model="name"
-        style="margin-top: 5px;"
+        style="margin-top: 5px"
         type="text"
         name=""
         id=""
+        @keyup.enter="loginAndSpawn"
       />
     </div>
-    <button
-      class="fancyButton"
-      style="margin-top: 20px;"
-      @click="loginAndSpawn"
-    >
+    <button class="fancyButton" style="margin-top: 20px" @click="loginAndSpawn">
       GO!
     </button>
   </div>
