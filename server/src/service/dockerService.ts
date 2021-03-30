@@ -75,6 +75,7 @@ export const spawnDocker = async (userId: string) => {
     Env: [
       `USER_ID=${userId}`,
       `DIGITALTWIN_APPID=${process.env.DIGITALTWIN_APPID}`,
+      `ENVIRONMENT=${process.env.ENVIRONMENT}`,
     ],
   };
 
