@@ -1,6 +1,6 @@
 <template>
   <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
-    <h1>digitalTwin</h1>
+    <h1>Digital Twin</h1>
     <img height="200" src="@/assets/threefold_registered.png" alt="" />
     <br />
     <h3>Start your Digital Twin journey</h3> <br />
