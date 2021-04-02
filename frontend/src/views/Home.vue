@@ -5,7 +5,8 @@
     <br />
     <h3>Start your digitalTwin journey</h3> <br />
     <br />
-    <div style="background:#fff; padding:2rem; border-radius: 1rem; box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);" >
+    <div
+      style="background:#fff; padding:2rem; border-radius: 1rem; box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);">
       <div>
         Please enter your <strong>ThreeFold Connect</strong> name
       </div>
@@ -37,7 +38,7 @@ export default defineComponent({
     const name = ref("");
 
     const loginAndSpawn = () => {
-      const actualName = name.value.trim().split(".3bot")[0];
+      const actualName = name.value.toLowerCase().trim().split(".3bot")[0];
       console.log("Going to login with username: ", actualName);
       spawn(actualName);
     };
@@ -57,7 +58,7 @@ export default defineComponent({
   margin-left: 1rem;
   padding: calc(0.5rem + 2px) 2rem;
   border-radius: 4px;
-  font-size:1.2rem;
+  font-size: 1.2rem;
   cursor: pointer;
 }
 
