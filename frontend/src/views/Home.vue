@@ -1,27 +1,31 @@
 <template>
-  <div>
-    <h1>Digital Twin</h1>
+  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center">
+    <h1>digitalTwin</h1>
     <img height="200" src="@/assets/threefold_registered.png" alt="" />
     <br />
-    <span>Start your Digital Twin journey</span> <br />
+    <h3>Start your Digital Twin journey</h3> <br />
     <br />
-    <div>
-      <div for="">
-        Please enter your <strong>ThreeFold Connect</strong> name (without
-        .3bot)
+    <div
+      style="background:#fff; padding:2rem; border-radius: 1rem; box-shadow: 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12), 0 1px 3px 0 rgba(0,0,0,0.20);">
+      <div>
+        Please enter your <strong>ThreeFold Connect</strong> name
       </div>
       <input
         v-model="name"
-        style="margin-top: 5px"
         type="text"
-        name=""
-        id=""
+        pattern="[0-9a-zA-Z\.]"
+        placeholder="johndoe"
         @keyup.enter="loginAndSpawn"
       />
+
+      <button
+        class="fancyButton"
+        style="margin-top: 20px;"
+        @click="loginAndSpawn"
+      >
+        GO!
+      </button>
     </div>
-    <button class="fancyButton" style="margin-top: 20px" @click="loginAndSpawn">
-      GO!
-    </button>
   </div>
 </template>
 
@@ -35,15 +39,16 @@ export default defineComponent({
     const name = ref("");
 
     const loginAndSpawn = () => {
-      console.log("Going to login with username: ", name.value);
-      spawn(name.value);
+      const actualName = name.value.toLowerCase().trim().split(".3bot")[0];
+      console.log("Going to login with username: ", actualName);
+      spawn(actualName);
     };
 
     return {
       name,
-      loginAndSpawn,
+      loginAndSpawn
     };
-  },
+  }
 });
 </script>
 
@@ -52,11 +57,29 @@ export default defineComponent({
   border: none;
   color: white;
   background: darkslategray;
-  padding: 1rem 2rem;
+  margin-left: 1rem;
+  padding: calc(0.5rem + 2px) 2rem;
   border-radius: 4px;
+  font-size: 1.2rem;
   cursor: pointer;
 }
+
 .fancyButton:hover {
   background: lightslategray;
+}
+
+input {
+  margin-top: 5px;
+  padding: 0.5rem;
+  min-width: 12rem;
+  border-radius: 4px;
+  border: 2px solid #ccc;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+input::placeholder {
+  color: #ccc;
 }
 </style>
