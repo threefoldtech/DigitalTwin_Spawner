@@ -13,7 +13,7 @@
         v-model="name"
         type="text"
         pattern="[0-9a-zA-Z\.]"
-        placeholder="jhondoe"
+        placeholder="johndoe"
       />
 
       <button
