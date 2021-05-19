@@ -1,5 +1,6 @@
 import { Request } from "express";
-import { config } from "../config/config";
+import { config as productionConfig} from "../config/config";
+import { config as stagingConfig } from "../config/config_staging";
 import { ThreefoldLogin } from "@threefoldjimber/threefold_login";
 import { generateRandomString } from "@threefoldjimber/threefold_login/dist";
 
@@ -8,6 +9,7 @@ export const getAppLoginUrl = async (
   redirectUrl: string,
   name: string
 ): Promise<string> => {
+  const config = process.env.VUE_APP_ENVIRONMENT === "production" ? productionConfig : stagingConfig;
   console.log("config: ");
   console.log(config);
 
@@ -29,6 +31,7 @@ export const getAppLoginUrl = async (
   return login.generateLoginUrl(loginState);
 };
 export const appCallback = async (request: Request): Promise<string> => {
+  const config = process.env.VUE_APP_ENVIRONMENT === "production" ? productionConfig : stagingConfig;
   const login = new ThreefoldLogin(
     config.appBackend,
     config.appId,

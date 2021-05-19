@@ -7,6 +7,6 @@ COPY yarn.lock yarn.lock
 RUN yarn install
 COPY . .
 RUN yarn build
-#ENV NODE_ENV=production
+ENV NODE_ENV $ENVIRONMENT
 CMD ["npm","run","prod"]
 
