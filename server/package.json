@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "@threefoldjimber/threefold_login": "^1.4.0",
+    "bip39": "^3.0.4",
     "cors": "^2.8.5",
     "dockerode": "^3.2.1",
     "express": "^4.17.1",

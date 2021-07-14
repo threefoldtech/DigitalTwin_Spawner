@@ -1,6 +1,8 @@
-import { logger } from "../logger";
 import Dockerode, { DeviceMapping } from "dockerode";
 import * as fs from "fs";
+import {release} from "os";
+import {generateMnemonic} from "bip39";
+import {logger} from "../logger";
 
 const docker = new Dockerode({ socketPath: "/var/run/docker.sock" });
 
@@ -10,6 +12,17 @@ export const initDocker = async () => {
     await docker.createNetwork({ Name: "chatnet" });
   }
 };
+
+const uuidv4 = () => {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+      /[xy]/g,
+      function (c) {
+        var r = (Math.random() * 16) | 0,
+            v = c == 'x' ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      }
+  );
+}
 
 const getImage = () => {
   try {
@@ -76,6 +89,9 @@ export const spawnDocker = async (userId: string) => {
       `USER_ID=${userId}`,
       `DIGITALTWIN_APPID=${process.env.DIGITALTWIN_APPID}`,
       `ENVIRONMENT=${process.env.ENVIRONMENT}`,
+      `SECRET=${uuidv4()}`,
+      `THREEBOT_PHRASE=${generateMnemonic()}`,
+      `ENABLE_SSL=false`
     ],
   };
 
