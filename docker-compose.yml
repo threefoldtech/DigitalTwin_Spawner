@@ -21,7 +21,7 @@ services:
     restart: always
     build: proxy
     volumes:
-      - /mnt/digitaltwin/certs:/etc/nginx/certs
+      - ../certs:/etc/nginx/certs
     ports:
       - 443:443
       - 80:80
