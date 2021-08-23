@@ -14,7 +14,7 @@
         v-model="name"
         type="text"
         pattern="[0-9a-zA-Z\.]"
-        placeholder="johndoe"
+        placeholder="Username"
         @keyup.enter="loginAndSpawn"
       />
 

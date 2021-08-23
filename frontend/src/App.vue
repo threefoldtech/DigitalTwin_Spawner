@@ -25,7 +25,4 @@ export default defineComponent({
   color: #2c3e50;
   margin-top: 60px;
 }
-html{
-  background: url(https://www.toptal.com/designers/subtlepatterns/patterns/geometric-leaves.png);
-}
 </style>
