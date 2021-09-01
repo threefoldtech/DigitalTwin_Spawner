@@ -35,7 +35,7 @@ services:
     build: frontend
     networks:
       - chatnet
-      
+
   onlyoffice-documentserver:
     image: onlyoffice/documentserver
     container_name: onlyoffice-documentserver
