@@ -1,8 +1,7 @@
 <template>
-  <div style="display: flex; flex-direction: column; justify-content: justify-around; align-items: center; overflow-hidden">
+  <div style="display: flex; flex-direction: column; justify-content: justify-around; align-items: center;" class="overflow-hidden">
     <div style="display: flex; flex-direction: row; justify-content: center; align-items: center">
-      <img style="margin-right: 20px;" class="h-28" src="@/assets/threefold_registered.png" alt="TF connect logo" />
-      <img style="margin-left: 20px;" class="h-28" src="@/assets/uhuru_spawner.svg" alt="uhuru logo" />
+      <img class="h-28" src="@/assets/uhuru_spawner.svg" alt="uhuru logo" />
     </div>
     <div style="background-color: white; padding: 50px;" class="mt-5 rounded-md shadow">
       <div class="flex flex-col">
@@ -32,21 +31,34 @@
         <DisclosureButton
           class="flex
           justify-between
-          items-center"
+          items-center
+          "
         >
           <span class="">Do you want to run the decentralized Uhuru machine on your own machine?</span>
           <ChevronUpIcon :class="{ 'rotate-180': !open }" class="w-5 h-5 text-gray-500 transform mx-2" />
         </DisclosureButton>
-        <DisclosurePanel class="px-4 pt-4 pb-2 text-sm text-gray-500">
+        <DisclosurePanel style='width:28rem;' class="px-4 pt-4 pb-2 text-sm text-gray-500">
           <div class='flex flex-col items-center' >
-            <p class="text-left max-w-md">1. Install Docker <br/>
-            2. Run your own Uhuru environment inside a Docker:</p>
-            <div class="bg-black text-white mt-2 p-4 h-16 overflow-x-scroll overflow-y-hidden whitespace-nowrap w-5/12 rounded-md">
-            <p class="text-white text-left ">
-              docker run -ti --sysctl net.ipv6.conf.all.disable_ipv6=0 -e "USER_ID={{USERNAME}}" -e "DIGITALTWIN_APPID=digitaltwin-local.jimbertesting.be" -e "ENVIRONMENT=staging" --cap-add=NET_ADMIN --device=/dev/net/tun:/dev/net/tun  -p 443:443 threefoldjimber/digitaltwin:latest <span class="text-black">/////</span>
-            </p>
-            </div>
-            <p class="text-left max-w-md mt-2">
+            <p  class="text-left max-w-md self-start">1. Install Docker</p>
+            <Disclosure v-slot="{ open }">
+              <DisclosureButton
+                class="flex
+                justify-between
+                items-center
+                self-start"
+              >
+                <p>2. Run your own Uhuru environment inside a Docker</p>
+                <ChevronUpIcon :class="{ 'rotate-180': !open }" class="w-5 h-5 text-gray-500 transform mx-2" />
+              </DisclosureButton>
+              <DisclosurePanel class="max-w-md flex justify-center">
+                <div class="bg-black text-white mt-2 p-4 h-16 overflow-x-scroll overflow-y-hidden whitespace-nowrap rounded-md">
+                  <p class="text-white text-left ">
+                    docker run -ti --sysctl net.ipv6.conf.all.disable_ipv6=0 -e "USER_ID={{USERNAME}}" -e "DIGITALTWIN_APPID=digitaltwin-local.jimbertesting.be" -e "ENVIRONMENT=staging" --cap-add=NET_ADMIN --device=/dev/net/tun:/dev/net/tun  -p 443:443 threefoldjimber/digitaltwin:latest <span class="text-black">/////</span>
+                  </p>
+                </div>
+              </DisclosurePanel>
+            </Disclosure>
+            <p class="text-left max-w-md mt-2 self-start">
             3. Browse to https://{{username}}.digitaltwin-local.jimbertesting.be<br/>
             4. Replace {{USERNAME}} with your own name. </p>
           </div>
@@ -55,9 +67,10 @@
     </div>
       <div
     class='fixed left-0 top-0 bg-red-700 text-white uppercase text-xl z-[9999] px-16 transform -rotate-45 -translate-x-16 translate-y-2 opacity-50 pointer-events-none'
-  >
-    Beta
-  </div>
+    >
+      Beta
+    </div>
+  <p class="absolute bottom-2">Powered by <a class="underline color-primary" href="https://threefold.io/">threefold</a></p>
   </div>
 </template>
 
