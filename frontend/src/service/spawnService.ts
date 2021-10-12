@@ -36,6 +36,15 @@ export const spawn = async (name: string) => {
       });
     }, 5000)
   }
+  if (response.status !== 200) {
+    setTimeout(async () => {
+      //try again in 5 seconds
+      console.log("lets try again in 5 seconds")
+      const response = await axios.post(endpoint, {
+        name,
+      });
+    }, 5000)
+  }
 
   // console.log("Endpoint: ", endpoint);
   // try {
