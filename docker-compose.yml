@@ -24,10 +24,10 @@ services:
 #    build: proxy
 #    volumes:
 #      - ../certs:/etc/nginx/certs
-#    ports:
+#   ports:
 #      - 443:443
 #      - 80:80
-#    networks:
+#   networks:
 #      - chatnet
 
   digitaltwin-frontend:
