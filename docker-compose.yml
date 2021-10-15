@@ -17,18 +17,18 @@ services:
       - DIGITALTWIN_APPID=${DIGITALTWIN_APPID}
       - ENVIRONMENT=${ENVIRONMENT}
 
-#  digitaltwin-proxy:
-#    image: threefoldjimber/digitaltwin-proxy:${digitaltwin_proxy_tag}
-#    container_name: digitaltwin-proxy
-#    restart: always
-#    build: proxy
-#    volumes:
-#      - ../certs:/etc/nginx/certs
-#   ports:
-#      - 443:443
-#      - 80:80
-#   networks:
-#      - chatnet
+  digitaltwin-proxy:
+    image: threefoldjimber/digitaltwin-proxy:${digitaltwin_proxy_tag}
+    container_name: digitaltwin-proxy
+    restart: always
+    build: proxy
+    volumes:
+      - ../certs:/etc/nginx/certs
+    ports:
+       - 443:443
+       - 80:80
+    networks:
+       - chatnet
 
   digitaltwin-frontend:
     image: threefoldjimber/digitaltwin-frontend:${digitaltwin_frontend_tag}
@@ -37,6 +37,9 @@ services:
     build: frontend
     networks:
       - chatnet
+    environment:
+      - DIGITALTWIN_APPID=${DIGITALTWIN_APPID}
+      - ENVIRONMENT=${ENVIRONMENT}
 
   onlyoffice-documentserver:
     image: onlyoffice/documentserver

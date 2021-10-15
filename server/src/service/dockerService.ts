@@ -1,8 +1,8 @@
 import Dockerode, { DeviceMapping } from "dockerode";
 import * as fs from "fs";
-import {release} from "os";
-import {generateMnemonic} from "bip39";
-import {logger} from "../logger";
+import { release } from "os";
+import { generateMnemonic } from "bip39";
+import { logger } from "../logger";
 
 const docker = new Dockerode({ socketPath: "/var/run/docker.sock" });
 
@@ -15,12 +15,12 @@ export const initDocker = async () => {
 
 const uuidv4 = () => {
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
-      /[xy]/g,
-      function (c) {
-        var r = (Math.random() * 16) | 0,
-            v = c == 'x' ? r : (r & 0x3) | 0x8;
-        return v.toString(16);
-      }
+    /[xy]/g,
+    function (c) {
+      var r = (Math.random() * 16) | 0,
+        v = c == 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    }
   );
 }
 
