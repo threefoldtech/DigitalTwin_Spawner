@@ -17,34 +17,31 @@ export const spawn = async (name: string) => {
   });
 
   if (response.status === 200) {
+    console.log(response.status)
     if (!response.data?.success) {
       console.log(
         "Spawn went wrong, redirecting the use anyways, since the container most-likely already exists."
       );
     }
 
+    console.log('url', response.data?.redirectUrl)
+    const respi = await axios.get(response.data?.redirectUrl + "/api/healthcheck");
+    console.log(respi)
+
+    // setTimeout(function () {
+
+    //   window.location.href = response.data?.redirectUrl;
+
+    // }, 500)
+    // console.log('done waiting')
+
     window.location.href = response.data?.redirectUrl;
+
+
+    // window.location.href = `https://${name}.digitaltwin.jimbertesting.be` // todo change to  `https://${name}.${process.env.DIGITALTWIN_APPID}`
     return;
   }
 
-  if (response.status !== 200) {
-    setTimeout(async () => {
-      //try again in 5 seconds
-      console.log("lets try again in 5 seconds")
-      const response = await axios.post(endpoint, {
-        name,
-      });
-    }, 5000)
-  }
-  if (response.status !== 200) {
-    setTimeout(async () => {
-      //try again in 5 seconds
-      console.log("lets try again in 5 seconds")
-      const response = await axios.post(endpoint, {
-        name,
-      });
-    }, 5000)
-  }
 
   // console.log("Endpoint: ", endpoint);
   // try {
