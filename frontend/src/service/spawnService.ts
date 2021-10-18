@@ -25,15 +25,15 @@ export const spawn = async (name: string) => {
     }
 
     console.log('url', response.data?.redirectUrl)
-    const respi = await axios.get(response.data?.redirectUrl + "/api/healthcheck");
-    console.log(respi)
+    // const respi = await axios.get(response.data?.redirectUrl + "/api/healthcheck");
+    // console.log(respi)
 
-    // setTimeout(function () {
+    setTimeout(function () {
 
-    //   window.location.href = response.data?.redirectUrl;
+      window.location.href = response.data?.redirectUrl;
 
-    // }, 500)
-    // console.log('done waiting')
+    }, 500)
+    console.log('done waiting')
 
     window.location.href = response.data?.redirectUrl;
 
