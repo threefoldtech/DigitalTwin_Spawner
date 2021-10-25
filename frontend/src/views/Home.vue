@@ -70,7 +70,7 @@
     >
       Beta
     </div>
-  <p class="absolute bottom-2">Powered by <a class="underline color-primary" href="https://threefold.io/">threefold</a></p>
+  <p class="absolute bottom-2">Powered by <a class="underline color-primary" href="https://threefold.io/">ThreeFold</a></p>
   </div>
 </template>
 
