@@ -18,7 +18,6 @@ jobs:
           digitaltwin_spawner_tag: ${{ github.sha }}
           digitaltwin_frontend_tag: ${{ github.sha }}
           digitaltwin_proxy_tag: ${{ github.sha }}
-          digitaltwin_onlyoffice_tag: ${{ github.sha }}
           DIGITALTWIN_APPID: "digitaltwin-test.jimbertesting.be"
           ENVIRONMENT: "staging"
       - name: Log into GitHub Container Registry
@@ -28,15 +27,12 @@ jobs:
           docker tag threefoldjimber/digitaltwin-spawner:${{ github.sha }} threefoldjimber/digitaltwin-spawner:latest
           docker tag threefoldjimber/digitaltwin-frontend:${{ github.sha }} threefoldjimber/digitaltwin-frontend:latest
           # docker tag threefoldjimber/digitaltwin-proxy:${{ github.sha }} threefoldjimber/digitaltwin-proxy:latest
-          docker tag threefoldjimber/digitaltwin-onlyoffice:${{ github.sha }} threefoldjimber/digitaltwin-onlyoffice:latest
           docker push threefoldjimber/digitaltwin-spawner:latest
           docker push threefoldjimber/digitaltwin-frontend:latest
           # docker push threefoldjimber/digitaltwin-proxy:latest
-          docker push threefoldjimber/digitaltwin-onlyoffice:latest
           docker push threefoldjimber/digitaltwin-spawner:${{ github.sha }}
           docker push threefoldjimber/digitaltwin-frontend:${{ github.sha }}
           # docker push threefoldjimber/digitaltwin-proxy:${{ github.sha }}
-          docker push threefoldjimber/digitaltwin-onlyoffice:${{ github.sha }}
   deploy:
     needs: [build]
     runs-on: staging
@@ -50,13 +46,11 @@ jobs:
           docker pull threefoldjimber/digitaltwin-spawner:${{ github.sha }}
           docker pull threefoldjimber/digitaltwin-frontend:${{ github.sha }}
           # docker pull threefoldjimber/digitaltwin-proxy:${{ github.sha }}
-          docker pull threefoldjimber/digitaltwin-onlyoffice:${{ github.sha }}
           docker-compose up -d
           echo Completed.
         env:
           digitaltwin_spawner_tag: ${{ github.sha }}
           digitaltwin_frontend_tag: ${{ github.sha }}
           digitaltwin_proxy_tag: ${{ github.sha }}
-          digitaltwin_onlyoffice_tag: ${{ github.sha }}
           DIGITALTWIN_APPID: "digitaltwin-test.jimbertesting.be"
           ENVIRONMENT: "staging"
