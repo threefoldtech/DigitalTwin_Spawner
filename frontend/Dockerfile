@@ -4,6 +4,7 @@ COPY package.json package.json
 COPY yarn.lock yarn.lock
 RUN yarn install
 COPY . .
+RUN npx browserslist@latest --update-db
 RUN yarn build
 
 FROM nginx:alpine
