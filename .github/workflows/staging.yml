@@ -28,7 +28,7 @@ jobs:
           docker tag threefoldjimber/digitaltwin-spawner:${{ github.sha }} threefoldjimber/digitaltwin-spawner:latest
           docker tag threefoldjimber/digitaltwin-frontend:${{ github.sha }} threefoldjimber/digitaltwin-frontend:latest
           # docker tag threefoldjimber/digitaltwin-proxy:${{ github.sha }} threefoldjimber/digitaltwin-proxy:latest
-          docker tag threefoldjimber/digitaltwin-proxy:${{ github.sha }} threefoldjimber/digitaltwin-proxy:latest
+          docker tag threefoldjimber/digitaltwin-onlyoffice:${{ github.sha }} threefoldjimber/digitaltwin-onlyoffice:latest
           docker push threefoldjimber/digitaltwin-spawner:latest
           docker push threefoldjimber/digitaltwin-frontend:latest
           # docker push threefoldjimber/digitaltwin-proxy:latest
