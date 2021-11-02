@@ -39,7 +39,7 @@ services:
       - chatnet
 
   onlyoffice-documentserver:
-    image: jimbersoftware/onlyoffice_yggdrasil
+    image: jimbersoftware/onlyofficeyggdrasil
     container_name: onlyoffice-documentserver
     restart: always
     networks:
