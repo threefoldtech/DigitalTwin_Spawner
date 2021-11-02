@@ -47,7 +47,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
     privileged: true
-    device:
+    devices:
       - /dev/net/tun:/dev/net/tun
 
 networks:
