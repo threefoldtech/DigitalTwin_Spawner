@@ -32,6 +32,7 @@ jobs:
           docker push threefoldjimber/digitaltwin-spawner:latest
           docker push threefoldjimber/digitaltwin-frontend:latest
           # docker push threefoldjimber/digitaltwin-proxy:latest
+          docker push threefoldjimber/digitaltwin-onlyoffice:latest
           docker push threefoldjimber/digitaltwin-spawner:${{ github.sha }}
           docker push threefoldjimber/digitaltwin-frontend:${{ github.sha }}
           # docker push threefoldjimber/digitaltwin-proxy:${{ github.sha }}
