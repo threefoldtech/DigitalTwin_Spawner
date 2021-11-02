@@ -4,6 +4,7 @@ COPY package.json package.json
 COPY yarn.lock yarn.lock
 RUN yarn install
 COPY . .
+ENV NODE_OPTIONS=--openssl-legacy-provider
 RUN npx browserslist@latest --update-db
 RUN yarn build
 
