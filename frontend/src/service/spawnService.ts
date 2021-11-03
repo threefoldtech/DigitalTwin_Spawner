@@ -35,7 +35,7 @@ export const spawn = async (name: string) => {
     }, 500)
     console.log('done waiting')
 
-    window.location.href = response.data?.redirectUrl;
+//     window.location.href = response.data?.redirectUrl;
 
 
     // window.location.href = `https://${name}.digitaltwin.jimbertesting.be` // todo change to  `https://${name}.${process.env.DIGITALTWIN_APPID}`
