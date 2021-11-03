@@ -38,7 +38,7 @@ jobs:
     runs-on: production
     environment:
       name: digitaltwin.production
-      url: https://digitaltwin.jimbertesting.be/
+      url: https://beta.uhuru.me/
     steps:
       - uses: actions/checkout@v2
       - name: Deploying on production server
