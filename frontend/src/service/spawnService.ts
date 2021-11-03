@@ -31,15 +31,17 @@ export const spawn = async (name: string) => {
     setTimeout(function () {
 
       window.location.href = response.data?.redirectUrl;
+      console.log('done waiting')
+          return;
 
     }, 500)
-    console.log('done waiting')
+    
 
 //     window.location.href = response.data?.redirectUrl;
 
 
     // window.location.href = `https://${name}.digitaltwin.jimbertesting.be` // todo change to  `https://${name}.${process.env.DIGITALTWIN_APPID}`
-    return;
+
   }
 
 
