@@ -32,12 +32,12 @@ export const spawn = async (name: string) => {
 
       window.location.href = response.data?.redirectUrl;
       console.log('done waiting')
-          return;
 
     }, 500)
     
 
-//     window.location.href = response.data?.redirectUrl;
+    window.location.href = response.data?.redirectUrl;
+    return;
 
 
     // window.location.href = `https://${name}.digitaltwin.jimbertesting.be` // todo change to  `https://${name}.${process.env.DIGITALTWIN_APPID}`
