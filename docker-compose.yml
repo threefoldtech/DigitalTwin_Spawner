@@ -1,21 +1,21 @@
 version: "3"
 
 services:
-  # digitaltwin-spawner:
-  #   image: threefoldjimber/digitaltwin-spawner:${digitaltwin_spawner_tag}
-  #   container_name: digitaltwin-spawner
-  #   build: server
-  #   restart: always
-  #   env_file:
-  #     - ./.env
-  #   volumes:
-  #     - /var/run/docker.sock:/var/run/docker.sock
-  #     - /etc/digitaltwin:/config
-  #   networks:
-  #     - chatnet
-  #   environment:
-  #     - DIGITALTWIN_APPID=${DIGITALTWIN_APPID}
-  #     - ENVIRONMENT=${ENVIRONMENT}
+  digitaltwin-spawner:
+    image: threefoldjimber/digitaltwin-spawner:${digitaltwin_spawner_tag}
+    container_name: digitaltwin-spawner
+    build: server
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/digitaltwin:/config
+    networks:
+      - chatnet
+    environment:
+      - DIGITALTWIN_APPID=${DIGITALTWIN_APPID}
+      - ENVIRONMENT=${ENVIRONMENT}
 
   digitaltwin-proxy:
     image: threefoldjimber/digitaltwin-proxy:${digitaltwin_proxy_tag}
