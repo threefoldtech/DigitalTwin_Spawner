@@ -90,6 +90,7 @@ export default defineComponent({
     const name = ref("");
     const loginAndSpawn = () => {
       const actualName = name.value.toLowerCase().trim().split(".3bot")[0];
+      console.log("Username", actualName);
       console.log("Going to login with username: ", actualName);
       spawn(actualName);
     };
