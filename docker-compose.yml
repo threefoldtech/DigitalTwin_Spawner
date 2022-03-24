@@ -21,7 +21,6 @@ services:
     image: nginx:alpine
     container_name: digitaltwin-proxy
     restart: always
-    build: proxy
     volumes:
       - ../certs:/etc/nginx/certs
       - ./proxy/nginx.conf:/etc/nginx/nginx.conf
