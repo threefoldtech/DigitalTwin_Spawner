@@ -22,7 +22,7 @@ services:
     container_name: digitaltwin-proxy
     restart: always
     volumes:
-      - ../certs:/etc/nginx/certs
+      - ../../docker/certs:/etc/nginx/certs
       - ./proxy/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 443:443
