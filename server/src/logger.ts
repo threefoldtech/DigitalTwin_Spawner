@@ -1,4 +1,4 @@
-import {createLogger, format, transports} from 'winston';
+import { createLogger, format, transports } from 'winston';
 
 // creates a new Winston Logger
 export const logger = createLogger({
@@ -10,15 +10,19 @@ export const logger = createLogger({
             format: format.combine(
                 format.colorize(),
                 format.timestamp({
-                    format: 'YY/MM/DD:HH:mm:ss:SSS'
-                }), format.printf((info: any) => `[${info.timestamp}] ${info.level}: ${info.message}` + (info.splat !== undefined ? `${info.splat}` : " "))
-            )
+                    format: 'YY/MM/DD:HH:mm:ss:SSS',
+                }),
+                format.printf(
+                    (info: any) =>
+                        `[${info.timestamp}] ${info.level}: ${info.message}` +
+                        (info.splat !== undefined ? `${info.splat}` : ' ')
+                )
+            ),
         }),
-        new transports.File(
-            {
-                filename: './logs/error.log',
-                level: 'error'
-            }),
+        new transports.File({
+            filename: './logs/error.log',
+            level: 'error',
+        }),
     ],
-    exitOnError: false
+    exitOnError: false,
 });
