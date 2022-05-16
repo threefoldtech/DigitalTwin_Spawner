@@ -2,9 +2,9 @@
 
 ## Install the following Dependencies
 
-- node/npm
-- yarn
-- tmux
+-   node/npm
+-   yarn
+-   tmux
 
 ## Running ./frontend (http://localhost:8080)
 
@@ -22,10 +22,10 @@ yarn serve
 
 ## Alternatively (Will start a tmux session with everything u need attached to it.)
 
-- You can run ./start.sh to trigger it all.
+-   You can run ./start.sh to trigger it all.
 
-- chmod +x start.sh
-- ./start.sh
+-   chmod +x start.sh
+-   ./start.sh
 
 ## Tmux config for clicking and copy-pasting
 
